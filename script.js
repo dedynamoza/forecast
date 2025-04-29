@@ -71,37 +71,55 @@ const services = [
     resultBody.innerHTML = "";
   
     const kekurangan = Math.max(target - revenue, 0);
-    const totalFeePerService = selectedServices.reduce((sum, s) => sum + s.fee, 0);
+    if (selectedServices.length === 0 || kekurangan === 0) {
+      document.getElementById("totalRevenue").textContent = "0";
+      document.getElementById("targetPercent").textContent = "0%";
+      return;
+    }
   
+    let remainingKekurangan = kekurangan;
     let totalRevenue = 0;
+    const kuantitiDistribusi = [];
   
-    selectedServices.forEach(service => {
-      const proportion = service.fee / totalFeePerService;
-      const bagianKekurangan = kekurangan * proportion;
-      const kuantiti = Math.ceil(bagianKekurangan / service.fee);
+    for (let i = 0; i < selectedServices.length; i++) {
+      const service = selectedServices[i];
+      let maxQty = Math.floor(remainingKekurangan / service.fee);
+      let qty = (i === selectedServices.length - 1)
+        ? Math.ceil(remainingKekurangan / service.fee)
+        : Math.floor(Math.random() * (maxQty + 1));
   
+      const subTotal = qty * service.fee;
+      remainingKekurangan -= subTotal;
+  
+      if (remainingKekurangan < 0) {
+        qty += Math.ceil(remainingKekurangan / service.fee);
+        remainingKekurangan = 0;
+      }
+  
+      kuantitiDistribusi.push({ service, qty });
+      totalRevenue += service.fee * qty;
+    }
+  
+    kuantitiDistribusi.forEach(({ service, qty }) => {
       const row = document.createElement("tr");
   
       const quantityCell = document.createElement("td");
-      quantityCell.textContent = kuantiti;
+      quantityCell.textContent = qty;
   
       const nameCell = document.createElement("td");
       nameCell.textContent = service.name;
   
       const feeCell = document.createElement("td");
-      feeCell.textContent = (service.fee * kuantiti).toLocaleString('id-ID');
+      feeCell.textContent = (service.fee * qty).toLocaleString('id-ID');
   
       row.appendChild(quantityCell);
       row.appendChild(nameCell);
       row.appendChild(feeCell);
   
       resultBody.appendChild(row);
-  
-      totalRevenue += service.fee * kuantiti;
     });
   
     document.getElementById("totalRevenue").textContent = totalRevenue.toLocaleString('id-ID');
-  
     const combinedRevenue = revenue + totalRevenue;
     const percent = target > 0 ? (combinedRevenue / target) * 100 : 0;
     document.getElementById("targetPercent").textContent = percent.toFixed(2) + '%';
