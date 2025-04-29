@@ -3,35 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aplikasi Forecast West 4</title>
+  <title>Simulasi Target Penjualan</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Aplikasi Forecast West 4</h1>
+    <h1>Simulasi Target Penjualan</h1>
 
-    <div class="form">
-      <div class="form-group">
-        <label for="revenue">Revenue:</label>
-        <input type="text" id="revenue" placeholder="Masukkan angka revenue...">
-      </div>
+    <label for="revenue">Revenue Saat Ini:</label>
+    <input type="text" id="revenue" placeholder="Contoh: 1.000.000">
 
-      <div class="form-group">
-        <label for="target">Target:</label>
-        <input type="text" id="target" placeholder="Masukkan angka target...">
-      </div>
+    <label for="target">Target Revenue:</label>
+    <input type="text" id="target" placeholder="Contoh: 5.000.000">
 
-      <div class="form-group">
-        <label for="service">Pilih Service (single or multiple):</label>
-        <select id="service" multiple size="8"></select>
-      </div>
+    <label for="service">Pilih Service (boleh lebih dari satu):</label>
+    <select id="service" multiple></select>
 
-      <button onclick="calculate()">Calculate</button>
-    </div>
+    <label for="comboSelect">Pilih Combo (opsional):</label>
+    <select id="comboSelect">
+      <option value="0">Tidak ada</option>
+      <option value="3+1">3+1</option>
+      <option value="6+2">6+2</option>
+      <option value="9+3">9+3</option>
+      <option value="12+5">12+5</option>
+      <option value="mix">Mix</option>
+    </select>
 
-    <div class="result">
-      <h2>Result</h2>
-      <div class="table-responsive">
+    <button onclick="calculate()">Hitung</button>
+
+    <div class="result-wrapper">
+      <h2>Hasil Perhitungan</h2>
+      <div class="table-container">
         <table>
           <thead>
             <tr>
@@ -40,21 +42,31 @@
               <th>Monthly Fee</th>
             </tr>
           </thead>
-          <tbody id="resultBody">
-            <!-- hasil otomatis -->
-          </tbody>
+          <tbody id="resultBody"></tbody>
           <tfoot>
             <tr>
-              <td colspan="2"><strong>Total Revenue</strong></td>
-              <td id="totalRevenue">0</td>
+              <td colspan="2">Total Revenue</td>
+              <td><span id="totalRevenue">0</span></td>
             </tr>
             <tr>
-              <td colspan="2"><strong>Target (%)</strong></td>
-              <td id="targetPercent">0%</td>
+              <td colspan="2">Persentase terhadap Target</td>
+              <td><span id="targetPercent">0%</span></td>
             </tr>
           </tfoot>
         </table>
       </div>
+
+      <h2>Visual Sebaran Service</h2>
+      <table id="chartTable">
+        <thead>
+          <tr>
+            <th>Nomor</th>
+            <th>Sebaran Service</th>
+            <th>Sebaran Persentase</th>
+          </tr>
+        </thead>
+        <tbody id="chartBody"></tbody>
+      </table>
     </div>
   </div>
 
