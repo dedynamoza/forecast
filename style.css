@@ -1,0 +1,135 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #CAF0F8, #90E0EF);
+    margin: 0;
+    padding: 0;
+    color: #03045E;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    background-color: #0077B6;
+    color: white;
+    padding: 15px 10px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  input, select, button {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #0077B6;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #0077B6;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  button:hover {
+    background-color: #005f8e;
+  }
+  
+  .result-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+  }
+  
+  .result-wrapper h2 {
+    font-size: 24px;
+    color: #03045E;
+    margin-bottom: 10px;
+  }
+  
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #00B4D8;
+  }
+  
+  th {
+    background-color: #00B4D8;
+    color: white;
+  }
+  
+  tfoot td {
+    background-color: #f1fcff;
+    font-weight: bold;
+    color: #03045E;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 20px;
+      padding: 10px;
+    }
+  
+    label {
+      font-size: 14px;
+    }
+  
+    input, select, button {
+      font-size: 14px;
+    }
+  
+    th, td {
+      font-size: 13px;
+      padding: 8px;
+    }
+  
+    .result-wrapper h2 {
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    input, select, button {
+      font-size: 13px;
+      padding: 8px;
+    }
+  
+    th, td {
+      font-size: 12px;
+    }
+  
+    h1 {
+      font-size: 18px;
+    }
+  }
+  

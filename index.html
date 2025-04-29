@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aplikasi Proyeksi West 4</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Aplikasi Proyeksi West 4</h1>
+
+    <div class="form">
+      <div class="form-group">
+        <label for="revenue">Revenue:</label>
+        <input type="text" id="revenue" placeholder="Masukkan angka revenue...">
+      </div>
+
+      <div class="form-group">
+        <label for="target">Target:</label>
+        <input type="text" id="target" placeholder="Masukkan angka target...">
+      </div>
+
+      <div class="form-group">
+        <label for="service">Pilih Service (single or multiple):</label>
+        <select id="service" multiple size="8"></select>
+      </div>
+
+      <button onclick="calculate()">Calculate</button>
+    </div>
+
+    <div class="result">
+      <h2>Result</h2>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Kuantiti</th>
+              <th>Service</th>
+              <th>Monthly Fee</th>
+            </tr>
+          </thead>
+          <tbody id="resultBody">
+            <!-- hasil otomatis -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2"><strong>Total Revenue</strong></td>
+              <td id="totalRevenue">0</td>
+            </tr>
+            <tr>
+              <td colspan="2"><strong>Target (%)</strong></td>
+              <td id="targetPercent">0%</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
